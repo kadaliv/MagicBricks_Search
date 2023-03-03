@@ -5,6 +5,7 @@ class SearchClass:
     def __init__(self, driver):
         self.driver = driver
 
+        # Element locator values
         self.locationSelect = "(//input[@type='text'])[1]"
         self.locationdelete = "mb-search__tag-close"
         self.enterloc =  "keyword"
@@ -16,7 +17,7 @@ class SearchClass:
         self.propertydeselect1 = "10002_10003_10021_10022"
         self.propertydeselect2 = "10001_10017"
         self.propertyselect = "11701"
-        self.proResults = "Property for Sale"
+        self.proResults = "//h1[@class='mb-srp__title--text1']"
         self.budgetField = "(//div[@class='mb-search__title'])[2]"
         self.selectMinValue = "(//div[@class='mb-search__min-max__item'])[39]"
         self.maxBudget = "budgetMax"
@@ -26,6 +27,9 @@ class SearchClass:
         self.LRdropdown = "commercialType"
         self.selectBuy = "(//div[@class='mb-search__auto-suggest__item'])[1]"
 
+    # Creating Element Methods
+
+    # Creating Element Methods for valid location
     def click_Location_field(self):
         protypeField = self.driver.find_element(By.XPATH, self.locationSelect)
         self.driver.execute_script("arguments[0].click();", protypeField)
@@ -49,6 +53,8 @@ class SearchClass:
         validLocValidation = self.driver.find_element(By.XPATH, self.getText).text
         return validLocValidation
 
+    # Creating Element Methods for invalid location
+
     def enter_Invalid_location(self, loc):
         enterInValidLoc = self.driver.find_element(By.ID,self.enterloc)
         enterInValidLoc.send_keys(loc)
@@ -60,6 +66,8 @@ class SearchClass:
         Visibile = self.driver.find_element(By.CLASS_NAME, self.visible)
         visibility = Visibile.get_attribute("placeholder")
         return visibility
+
+    # Creating Element Methods for property field
 
     def property_Type(self):
         proType = self.driver.find_element(By.XPATH, self.property)
@@ -78,8 +86,10 @@ class SearchClass:
         self.driver.execute_script("arguments[0].click();", proselect2)
 
     def pro_Result(self):
-        propertyResult = self.driver.find_element(By.PARTIAL_LINK_TEXT, self.proResults).is_displayed()
+        propertyResult = self.driver.find_element(By.XPATH, self.proResults).is_displayed()
         return propertyResult
+
+    # Creating Element Methods for Budget Field
 
     def Budget(self):
         budget = self.driver.find_element(By.XPATH, self.budgetField)
@@ -95,9 +105,13 @@ class SearchClass:
         budgetMaxSelect = self.driver.find_element(By.XPATH, self.selectMaxValue)
         self.driver.execute_script("arguments[0].click();", budgetMaxSelect)
 
+    # Creating Element Methods for profreeAdlink
+
     def click(self):
         proAdLink = self.driver.find_element(By.LINK_TEXT, self.profreeAdLink)
         self.driver.execute_script("arguments[0].click();", proAdLink)
+
+    # Creating Element Methods for commercial tab - lease / rent field
 
     def commercial_tab(self):
         commTab = self.driver.find_element(By.CSS_SELECTOR, self.Commercial)

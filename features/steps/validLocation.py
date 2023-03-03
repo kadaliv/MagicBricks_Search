@@ -5,6 +5,7 @@ from features.pages.SearchClass import SearchClass
 from datafiles import ExcelUtils
 from features.utility.ConfigClass import ConfigClass
 
+###################### First location dataset ########################
 @step("User enter the location {ValidLocation} for first dataset")
 def step_impl(context, ValidLocation):
     ExcelUtils.get_row_count(ConfigClass.dataFilePath, "Sheet1")
@@ -27,6 +28,8 @@ def step_impl(context):
     actualTitle = context.textVisibility.get_Text()
     print("The text is : " + actualTitle)
     assert_that(expectedTitle, equal_to(actualTitle))
+
+#######################second location dataset ###########################
 
 @step("User enter the location {ValidLocation} for second dataset")
 def step_impl(context, ValidLocation):

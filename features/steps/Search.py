@@ -2,6 +2,7 @@ from behave import *
 from hamcrest import *
 from features.pages.SearchClass import SearchClass
 
+
 @given("Chrome is opened and Magic bricks app is opened")
 def step_impl(context):
     context.driver.implicitly_wait(10)
@@ -10,11 +11,19 @@ def step_impl(context):
     print("Page title is " + actualTitle)
     assert_that(expectedTitle, equal_to(actualTitle))
 
+################## Scenario outline: invalid location ######################
+
 @when("User Clicks on location field and removes the default Value")
 def step_impl(context):
     context.driver.implicitly_wait(10)
     context.proType = SearchClass(context.driver)
     context.proType.click_Location_field()
+
+@step("User enter the location {InvalidLocation} in the location field")
+def step_impl(context, InvalidLocation):
+    context.driver.implicitly_wait(10)
+    enterInvalidLocation = SearchClass(context.driver)
+    enterInvalidLocation.enter_Invalid_location(InvalidLocation)
 
 @step("User Clicks on search button")
 def step_impl(context):
@@ -22,13 +31,6 @@ def step_impl(context):
     context.searchButton = SearchClass(context.driver)
     context.searchButton.click_search_button()
     context.driver.implicitly_wait(10)
-
-############################################################################
-@step("User enter the location {InvalidLocation} in the location field")
-def step_impl(context, InvalidLocation):
-    context.driver.implicitly_wait(10)
-    enterInvalidLocation = SearchClass(context.driver)
-    enterInvalidLocation.enter_Invalid_location(InvalidLocation)
 
 @then("It will show default display the placeholder text")
 def step_impl(context):
@@ -39,7 +41,7 @@ def step_impl(context):
     print(actualValue)
     assert_that(expectedValue, equal_to(actualValue))
 
-###############################################################################
+##########################Scenario: property field #################################
 @when("User Clicks on Property Type field")
 def step_impl(context):
     context.driver.implicitly_wait(10)
@@ -67,7 +69,7 @@ def step_impl(context):
     print("link text is ", actualTitle)
     assert_that(expectedTitle, equal_to(actualTitle))
 
-###############################################################################
+###########################Scenario : Budget Field ##################################
 
 @when("User Clicks on budget field")
 def step_impl(context):
@@ -89,7 +91,7 @@ def step_impl(context):
     print("Page url is " + actualurl)
     assert_that(expectedurl, equal_to(actualurl))
 
-###############################################################################
+#############################Scenario : Ts_PostFreePropertyAd link ###################################
 @when("User Clicks on Ts_PostFreePropertyAd link")
 def step_impl(context):
     context.driver.implicitly_wait(10)
@@ -104,7 +106,7 @@ def step_impl(context):
     print("Page title is " + actualTitle)
     assert_that(expectedTitle, equal_to(actualTitle))
 
-###############################################################################
+####################Scenario : Commercail tab (Lease/Rent field) #######################
 @when("User Clicks on Commercial tab")
 def step_impl(context):
     context.driver.implicitly_wait(10)
