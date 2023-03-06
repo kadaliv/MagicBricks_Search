@@ -1,3 +1,4 @@
+#@functionaltests
 Feature: : Valid Location
 
 Background:

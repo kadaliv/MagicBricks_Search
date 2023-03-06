@@ -83,7 +83,7 @@ def step_impl(context):
     context.select_Min_Max = SearchClass(context.driver)
     context.select_Min_Max.budget_Min_Max()
 
-@then("It shows the expected results")
+@then("It shows the properties based on the given budget")
 def step_impl(context):
     context.driver.implicitly_wait(10)
     expectedurl = 'https://www.magicbricks.com/property-for-sale/residential-real-estate?bedroom=2,3&proptype=Multistorey-Apartment,Builder-Floor-Apartment,Penthouse,Studio-Apartment,Residential-House,Villa&cityName=Mumbai&BudgetMin=60-Lacs&BudgetMax=1.2-Crores'
@@ -119,7 +119,7 @@ def step_impl(context):
     context.commdropdown = SearchClass(context.driver)
     context.commdropdown.dropDownLR()
 
-@then("It shows the available results")
+@then("It shows related commercial properties")
 def step_impl(context):
     context.driver.implicitly_wait(10)
     expectedurl = 'https://www.magicbricks.com/property-for-rent/commercial-real-estate?bedroom=&proptype=Commercial-Office-Space,Office-ITPark-SEZ,Commercial-Shop,Commercial-Showroom&categoryC=S&cityName=Mumbai'

@@ -26,7 +26,7 @@ Background:
         When User Clicks on budget field
         And User selects min and max budget from the drop down-list
         And User Clicks on search button
-        Then It shows the expected results
+        Then It shows the properties based on the given budget
 
     Scenario: Validate the Ts_PostFreePropertyAd link
         When User Clicks on Ts_PostFreePropertyAd link
@@ -36,7 +36,7 @@ Background:
         When User Clicks on Commercial tab
         And User Clicks on Lease/Rent drop-down list
         And User Clicks on search button
-        Then It shows the available results
+        Then It shows related commercial properties
 
 
 
