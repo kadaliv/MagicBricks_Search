@@ -24,7 +24,7 @@ class SearchClass:
         self.selectMaxValue = "(//div[@class='mb-search__min-max__item'])[70]"
         self.profreeAdLink = "Post Free Property Ad"
         self.Commercial = "#tabCOMM"
-        self.LRdropdown = "commercialType"
+        self.LRdropdown = "html/body/section/div/div/div[3]/div/div[1]"
         self.selectBuy = "(//div[@class='mb-search__auto-suggest__item'])[1]"
 
     # Creating Element Methods
@@ -118,7 +118,7 @@ class SearchClass:
         self.driver.execute_script("arguments[0].click();", commTab)
 
     def dropDownLR(self):
-        dropdown = self.driver.find_element(By.ID, self.LRdropdown)
+        dropdown = self.driver.find_element(By.XPATH, self.LRdropdown)
         self.driver.execute_script("arguments[0].click();", dropdown)
         self.driver.implicitly_wait(10)
         select_lr = self.driver.find_element(By.XPATH, self.selectBuy)
